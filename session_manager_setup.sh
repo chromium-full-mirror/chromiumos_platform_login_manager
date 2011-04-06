@@ -231,6 +231,7 @@ for file in $(find $PEPPER_PATH -name '*.info'); do
     # Flash is treated specially.
     FLASH_FLAGS="--ppapi-flash-path=${FILE_NAME}"
     FLASH_FLAGS="${FLASH_FLAGS} --ppapi-flash-version=${VERSION}"
+    FLASH_FLAGS="${FLASH_FLAGS} --ppapi-flash-in-process"
   else
     PLUGIN_STRING="${PLUGIN_STRING};${MIME_TYPES}"
     REGISTER_PLUGINS="${REGISTER_PLUGINS}${COMMA}${PLUGIN_STRING}"
