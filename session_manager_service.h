@@ -497,8 +497,10 @@ class SessionManagerService
   static const char kKeygenExecutable[];
   static const char kTemporaryKeyFilename[];
 
+  // TODO(cmasone): consider tracking job, pid and watcher in one struct.
   std::vector<ChildJobInterface*> child_jobs_;
   std::vector<int> child_pids_;
+  std::vector<guint> child_watchers_;
   bool exit_on_child_done_;
   scoped_ptr<ChildJobInterface> keygen_job_;
 
