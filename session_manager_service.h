@@ -399,6 +399,9 @@ class SessionManagerService
   // Terminate all children, with increasing prejudice.
   void CleanupChildren(int timeout);
 
+  // De-register all child-exit handlers.
+  void DeregisterChildWatchers();
+
   // Assuming the current user has access to the owner private key
   // (read: is the owner), this call whitelists |current_user_|, sets a
   // property indicating |current_user_| is the owner, and schedules both
