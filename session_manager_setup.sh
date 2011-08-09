@@ -361,6 +361,7 @@ exec /sbin/session_manager --uid=${USER_ID} -- \
             --apps-gallery-url="https://chrome.google.com/webstore/" \
             --compress-sys-feedback \
             --device-management-url="$DMSERVER" \
+            --disable-accelerated-2d-canvas \
             --disable-domui-menu \
             --disable-seccomp-sandbox \
             --enable-accelerated-plugins \
