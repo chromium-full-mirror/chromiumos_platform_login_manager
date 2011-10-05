@@ -369,6 +369,7 @@ exec /sbin/session_manager --uid=${USER_ID} -- \
             --enable-gview \
             --enable-logging \
             --enable-login-images \
+            --force-compositing-mode \
             --enable-smooth-scrolling \
             --log-level=1 \
             --login-manager \
