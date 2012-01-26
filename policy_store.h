@@ -1,4 +1,4 @@
-// Copyright (c) 2011 The Chromium OS Authors. All rights reserved.
+// Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -29,6 +29,8 @@ class PolicyStore {
   explicit PolicyStore(const FilePath& policy_path);
   virtual ~PolicyStore();
 
+  virtual bool DefunctPrefsFilePresent();
+
   // Load the signed policy off of disk into |policy_|.
   // Returns true unless there is a policy on disk and loading it fails.
   virtual bool LoadOrCreate();
@@ -43,6 +45,8 @@ class PolicyStore {
   virtual void Set(const enterprise_management::PolicyFetchResponse& policy);
 
  private:
+  static const char kPrefsFileName[];
+
   enterprise_management::PolicyFetchResponse policy_;
   const FilePath policy_path_;
 

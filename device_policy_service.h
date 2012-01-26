@@ -54,6 +54,9 @@ class DevicePolicyService : public PolicyService {
   // Checks whether the key is missing.
   virtual bool KeyMissing();
 
+  // Overriden from PolicyService to allow for login metrics.
+  virtual bool Initialize();
+
   static const char kPolicyPath[];
   // Format of this string is documented in device_management_backend.proto.
   static const char kDevicePolicyType[];

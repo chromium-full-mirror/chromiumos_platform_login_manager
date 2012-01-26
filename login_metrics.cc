@@ -1,4 +1,4 @@
-// Copyright (c) 2010 The Chromium OS Authors. All rights reserved.
+// Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -22,6 +22,12 @@ const int LoginMetrics::kDevMode = 3;
 //static
 const int LoginMetrics::kMaxValue = 5;
 
+//static
+const char LoginMetrics::kLoginPolicyFilesMetric[] =
+    "Login.PolicyFilesStatePerBoot";
+//static
+const int LoginMetrics::kMaxPolicyFilesValue = 64;
+
 LoginMetrics::LoginMetrics() {}
 LoginMetrics::~LoginMetrics() {}
 
@@ -32,6 +38,20 @@ void LoginMetrics::SendLoginUserType(bool dev_mode, bool incognito,
   int uma_code = LoginUserTypeCode(dev_mode, incognito, owner);
   metrics_lib.SendEnumToUMA(kLoginUserTypeMetric, uma_code,
                             kMaxValue);
+}
+
+bool LoginMetrics::SendPolicyFilesStatus(bool key_good,
+                                         bool policy_good,
+                                         bool prefs_good) {
+  MetricsLibrary metrics_lib;
+  metrics_lib.Init();
+  int key_code = key_good ? 0 : 32;
+  int policy_code = policy_good ? 0 : 8;
+  int prefs_code = prefs_good ? 0 : 2;
+
+  return metrics_lib.SendEnumToUMA(kLoginPolicyFilesMetric,
+                                   key_code + policy_code + prefs_code,
+                                   kMaxPolicyFilesValue);
 }
 
 // Code for incognito, owner and any other user are 0, 1 and 2

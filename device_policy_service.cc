@@ -1,4 +1,4 @@
-// Copyright (c) 2011 The Chromium OS Authors. All rights reserved.
+// Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -12,6 +12,7 @@
 #include "login_manager/bindings/chrome_device_policy.pb.h"
 #include "login_manager/bindings/device_management_backend.pb.h"
 #include "login_manager/key_generator.h"
+#include "login_manager/login_metrics.h"
 #include "login_manager/nss_util.h"
 #include "login_manager/owner_key.h"
 #include "login_manager/owner_key_loss_mitigator.h"
@@ -104,6 +105,18 @@ DevicePolicyService::DevicePolicyService(
 
 bool DevicePolicyService::KeyMissing() {
   return key()->HaveCheckedDisk() && !key()->IsPopulated();
+}
+
+bool DevicePolicyService::Initialize() {
+  bool result = PolicyService::Initialize();
+
+  std::string serialized;
+  store()->Get().SerializeToString(&serialized);
+  LoginMetrics metrics;
+  metrics.SendPolicyFilesStatus(key()->IsPopulated(),
+                                serialized != "",
+                                store()->DefunctPrefsFilePresent());
+  return result;
 }
 
 bool DevicePolicyService::StoreOwnerProperties(const std::string& current_user,
