@@ -310,7 +310,6 @@ exec /sbin/session_manager --uid=${USER_ID} -- \
             --enable-smooth-scrolling \
             --enterprise-enrollment-initial-modulus=0 \
             --enterprise-enrollment-modulus-limit=0 \
-            --force-compositing-mode \
             --load-opencryptoki \
             --log-level=1 \
             --login-manager \
