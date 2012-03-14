@@ -308,7 +308,7 @@ exec /sbin/session_manager --uid=${USER_ID} -- \
             --enable-logging \
             --enable-onc-policy \
             --enable-smooth-scrolling \
-            --enterprise-enrollment-initial-modulus=0 \
+            --enterprise-enrollment-initial-modulus=5 \
             --enterprise-enrollment-modulus-limit=12 \
             --load-opencryptoki \
             --log-level=1 \
