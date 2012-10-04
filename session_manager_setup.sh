@@ -320,6 +320,11 @@ if use_flag_is_set has_hdd; then
   KILL_TIMEOUT_FLAG="--kill-timeout=12"
 fi
 
+# This flag is used to selectively enable VLOG()s on network modules.
+# TODO(gauravsh): Remove this once we a have mechanism to dynamically
+# enable logging for network state related changes.
+NETWORK_LOG_FLAGS="--vmodule=network_change_notifier*=1"
+
 # This flag is used to enable Encrypted Media Extension.
 ENCRYPTED_MEDIA_FLAG=
 if is_board daisy; then
@@ -402,5 +407,6 @@ exec /sbin/session_manager --uid=${USER_ID} ${KILL_TIMEOUT_FLAG} -- \
             ${TOUCHUI_FLAGS} \
             ${ASAN_FLAGS} \
             ${PPAPI_FLASH_FLAGS} \
+            ${NETWORK_LOG_FLAGS}
             ${ENCRYPTED_MEDIA_FLAG} \
     ${WM_SCRIPT:+-- "${WM_SCRIPT}"}
