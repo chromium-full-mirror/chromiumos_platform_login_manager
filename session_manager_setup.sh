@@ -234,6 +234,12 @@ if use_flag_is_set is_desktop; then
   SHOW_VOLUME_STATUS_FLAG="--show-volume-status"
 fi
 
+# Enable natural scroll by default.
+TOUCHPAD_FLAGS=
+if use_flag_is_set natural_scroll_default; then
+  TOUCHPAD_FLAGS="--enable-natural-scroll-default"
+fi
+
 AURA_FLAGS=
 if use_flag_is_set aura; then
   WM_SCRIPT=""
@@ -404,6 +410,7 @@ exec /sbin/session_manager --uid=${USER_ID} ${KILL_TIMEOUT_FLAG} -- \
             ${SCREENSAVER_FLAG} \
             ${SHOW_VOLUME_STATUS_FLAG} \
             ${SKIP_OOBE} \
+            ${TOUCHPAD_FLAGS} \
             ${TOUCHUI_FLAGS} \
             ${ASAN_FLAGS} \
             ${PPAPI_FLASH_FLAGS} \
