@@ -240,6 +240,11 @@ if use_flag_is_set natural_scroll_default; then
   TOUCHPAD_FLAGS="--enable-natural-scroll-default"
 fi
 
+KEYBOARD_FLAGS=
+if use_flag_is_set chromeos_keyboard; then
+  KEYBOARD_FLAGS="--has-chromeos-keyboard"
+fi
+
 AURA_FLAGS=
 if use_flag_is_set aura; then
   WM_SCRIPT=""
@@ -411,6 +416,7 @@ exec /sbin/session_manager --uid=${USER_ID} ${KILL_TIMEOUT_FLAG} -- \
             ${SHOW_VOLUME_STATUS_FLAG} \
             ${SKIP_OOBE} \
             ${TOUCHPAD_FLAGS} \
+            ${KEYBOARD_FLAGS} \
             ${TOUCHUI_FLAGS} \
             ${ASAN_FLAGS} \
             ${PPAPI_FLASH_FLAGS} \
