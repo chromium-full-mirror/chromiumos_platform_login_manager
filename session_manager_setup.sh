@@ -240,10 +240,9 @@ if use_flag_is_set natural_scroll_default; then
   TOUCHPAD_FLAGS="--enable-natural-scroll-default"
 fi
 
-KEYBOARD_FLAGS=
-if use_flag_is_set chromeos_keyboard; then
-  KEYBOARD_FLAGS="--has-chromeos-keyboard"
-fi
+# Always apply this flag to mask UI changes which are not complete
+# in this branch.
+KEYBOARD_FLAGS="--has-chromeos-keyboard"
 
 AURA_FLAGS=
 if use_flag_is_set aura; then
