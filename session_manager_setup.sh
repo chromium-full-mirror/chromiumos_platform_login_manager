@@ -291,7 +291,6 @@ if use_flag_is_set touchui; then
   TOUCHUI_FLAGS="
     --enable-touch-calibration
     --touch-calibration=0,0,0,30
-    --enable-gesture-tap-highlight
   "
 fi
 
