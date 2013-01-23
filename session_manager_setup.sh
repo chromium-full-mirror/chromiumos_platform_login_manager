@@ -336,6 +336,12 @@ elif [ -f ${HANG_DETECTION_FLAG_FILE} ]; then
   HANG_DETECTION_FLAG="--enable-hang-detection=5"  # And do it FASTER!
 fi
 
+# Get any user-specified chrome flags
+HUD_FLAG=""
+if [ -f "/home/chronos/.hudenabled" ]; then
+  HUD_FLAG="--ash-touch-hud"
+fi
+
 # TODO(gauravsh): Remove this once we a have mechanism to dynamically
 # enable logging for network state related changes.
 add_vmodule_pattern "network_change_notifier*=1"
@@ -415,4 +421,5 @@ exec /sbin/session_manager --uid=${USER_ID} ${KILL_TIMEOUT_FLAG} \
             ${TOUCHUI_FLAGS} \
             ${ASAN_FLAGS} \
             ${PPAPI_FLASH_FLAGS} \
-            ${VMODULE_FLAG}
+            ${VMODULE_FLAG} \
+            ${HUD_FLAG}
