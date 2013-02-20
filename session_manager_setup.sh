@@ -374,7 +374,6 @@ exec /sbin/session_manager --uid=${USER_ID} ${KILL_TIMEOUT_FLAG} \
     $CHROME --allow-webui-compositing \
             --device-management-url="$DMSERVER" \
             --disable-seccomp-sandbox \
-            --enable-autologin \
             --enable-encrypted-media \
             --enable-gpu-sandbox \
             --enable-logging \
