@@ -375,6 +375,7 @@ export PATH=/bin:/usr/bin:/usr/bin/X11
 exec /sbin/session_manager --uid=${USER_ID} ${KILL_TIMEOUT_FLAG} \
     ${HANG_DETECTION_FLAG} -- \
     $CHROME --allow-webui-compositing \
+            --ash-disable-new-audio-handler \
             --audio-buffer-size=2048 \
             --device-management-url="$DMSERVER" \
             --disable-seccomp-sandbox \
