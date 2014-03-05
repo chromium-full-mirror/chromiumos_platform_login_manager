@@ -439,7 +439,6 @@ exec /sbin/session_manager --uid=${USER_ID} ${KILL_TIMEOUT_FLAG} \
             --enable-fixed-position-compositing \
             --enable-logging \
             --enable-partial-swap \
-            --enable-impl-side-painting \
             --max-tiles-for-interest-area=512 \
             --enterprise-enrollment-initial-modulus=9 \
             --enterprise-enrollment-modulus-limit=13 \
